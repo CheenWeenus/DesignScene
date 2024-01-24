@@ -16,6 +16,6 @@ public class cloud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Time.deltaTime * new Vector3(Mathf.Sin(Time.time * waveSpd) * waveAmp,0,Mathf.Cos(Time.time * waveSpd) * waveAmp);
+        transform.position += Time.deltaTime * new Vector3(0,0,Mathf.Cos(Time.time * waveSpd) * waveAmp);
     }
 }
