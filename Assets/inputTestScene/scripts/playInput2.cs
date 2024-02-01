@@ -7,11 +7,9 @@ using UnityEngine.UIElements;
 
 public class playInput2 : MonoBehaviour
 {
+    public playerSO playerStats;
     Vector2 movement = Vector2.zero;
-    [SerializeField] float moveSpeed = 5;
-    //rb is the rigidBody of object
     Rigidbody rb;
-    [SerializeField] float bulletSpeed = 100;
     bool onGround = false;
 
     [SerializeField]
@@ -21,6 +19,7 @@ public class playInput2 : MonoBehaviour
     void Start()
     {
         //must define the rigid body before can use
+        playerStats.bulletCount = 3;
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -39,7 +38,7 @@ public class playInput2 : MonoBehaviour
 
 
         rb.velocity = val1.y * transform.forward + val1.x * transform.right;
-        rb.velocity *= moveSpeed;
+        rb.velocity *= playerStats.moveSpeed;
 
 
         Debug.Log(val1);
@@ -52,7 +51,7 @@ public class playInput2 : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, transform.position + 2.0f * transform.forward, Quaternion.identity);
         Rigidbody bulletRigidBody = bulletInstance.GetComponent<Rigidbody>();
 
-        bulletRigidBody.AddForce(bulletSpeed * transform.forward);
+        bulletRigidBody.AddForce(playerStats.bulletSpeed * transform.forward);
     }
 
     void OnJump()
@@ -63,6 +62,11 @@ public class playInput2 : MonoBehaviour
         {
             rb.AddForce(new Vector3(0,1000,0));
         }
+    }
+
+    void OnReload()
+    {
+
     }
 
     private void OnTriggerEnter(Collider other)

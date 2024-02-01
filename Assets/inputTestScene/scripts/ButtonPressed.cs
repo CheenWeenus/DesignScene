@@ -10,5 +10,6 @@ public class ButtonPressed : MonoBehaviour
         Image image = GetComponent<Image>();
 
         Debug.Log("Pressed");
+        Time.timeScale = 1;
     }
 }
