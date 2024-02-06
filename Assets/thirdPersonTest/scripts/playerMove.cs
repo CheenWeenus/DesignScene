@@ -15,14 +15,11 @@ public class playerMove : MonoBehaviour
     Vector3 movement = Vector3.zero;
     //bool onGround = false;
 
-    float forceMulti = 50;
-
-    [SerializeField] GameObject bullet;
+    float forceMulti = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerStats.bulletCount = 3;
         rb = gameObject.GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
     }
@@ -30,7 +27,7 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(movement * forceMulti, ForceMode.Force);
+        rb.AddForce(movement * forceMulti * playerStats.moveSpeed, ForceMode.Force);
     }
 
     // Player movement

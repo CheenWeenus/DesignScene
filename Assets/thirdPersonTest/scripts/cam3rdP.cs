@@ -14,8 +14,7 @@ public class cam3rdP : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
     private void FixedUpdate()
